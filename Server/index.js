@@ -1,0 +1,117 @@
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
+// Importing mysql and csvtojson packages
+// Requiring module
+// npm i mysql and csvtojson
+const csvtojson = require("csvtojson");
+const mysql = require("mysql");
+
+// Database credentials
+const hostname = "localhost",
+  username = "root",
+  password = "root",
+  databsename = "solita";
+
+// Establish connection to the database
+let con = mysql.createConnection({
+  host: hostname,
+  user: username,
+  password: password,
+  database: databsename,
+});
+
+// Lisätään asemat tietokantaan
+const fileName1 = "./Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv";
+csvtojson()
+  .fromFile(fileName1)
+  .then((source) => {
+    // Fetching the data from each row
+    // and inserting to the table "asemat"
+    for (var i = 0; i < source.length; i++) {
+      var FID = source[i]["FID"],
+        ID = source[i]["ID"],
+        Nimi = source[i]["NIMI"],
+        Namn = source[i]["Namn"],
+        Name = source[i]["Name"],
+        Osoite = source[i]["Osoite"],
+        Address = source[i]["Adress"],
+        Kaupunki = source[i]["Kaupunki"],
+        Stad = source[i]["Stad"],
+        Operaattori = source[i]["Operaattor"],
+        Kapasiteetti = source[i]["Kapasiteet"],
+        x = source[i]["x"],
+        y = source[i]["y"];
+      var insertStatement =
+        "INSERT INTO asemat values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      var items = [
+        FID,
+        ID,
+        Nimi,
+        Namn,
+        Name,
+        Osoite,
+        Address,
+        Kaupunki,
+        Stad,
+        Operaattori,
+        Kapasiteetti,
+        x,
+        y,
+      ]; // Inserting data of current row // into database
+      con.query(insertStatement, items, (err, results, fields) => {
+        if (err) {
+          console.log("Unable to insert item at row ", i + 1);
+          return console.log(err);
+        }
+      });
+    }
+    console.log("First items stored into database successfully");
+  });
+
+
+// Lisätään matkat tietokantaa
+const fileName2 = "./2021-05.csv";
+csvtojson()
+  .fromFile(fileName2)
+  .then((source) => {
+    // Fetching the data from each row
+    // and inserting to the table "matkat"
+    for (var i = 0; i < 500; i++) {
+      var departure_date = source[i]["Departure"],
+        return_date = source[i]["Return"],
+        departure_station_id = source[i]["Departure station id"],
+        departure_station_name = source[i]["Departure station name"],
+        return_station_id = source[i]["Return station id"],
+        return_station_name = source[i]["Return station name"],
+        covered_distance = source[i]["Covered distance (m)"],
+        duration = source[i]["Duration (sec)"];
+      var insertStatement = "INSERT INTO matkat values(?, ?, ?, ?, ?, ?, ?, ?)";
+      var items = [
+        departure_date,
+        return_date,
+        departure_station_id,
+        departure_station_name,
+        return_station_id,
+        return_station_name,
+        covered_distance,
+        duration,
+      ]; // Inserting data of current row // into database
+      con.query(insertStatement, items, (err, results, fields) => {
+        if (err) {
+          console.log("Unable to insert item at row ", i + 1);
+          return console.log(err);
+        }
+      });
+    }
+    console.log("Second items stored into database successfully");
+  });

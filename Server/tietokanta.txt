@@ -1,0 +1,44 @@
+create database solita;
+
+-- This line is to handle utf8 character needs (like ä and ö) if you have not set utf8 encoding already default for your mysql
+ALTER DATABASE vaalikone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- use the database
+use solita;
+
+-- these drops are not needed now (we droppped the whole database), but as an example how to drop a table
+DROP TABLE if exists asemat;
+DROP TABLE if exists matkat;
+
+
+
+
+-- create a table ehdokkaat (mysql does not bother the case of letters - in this case)
+
+CREATE TABLE asemat(
+   FID INTEGER NOT NULL,
+   ID INTEGER NOT NULL,
+   NIMI VARCHAR(500),
+   NAMN VARCHAR(500),
+   NAME VARCHAR(500),
+   OSOITE VARCHAR(1000),
+   ADDRESS VARCHAR(1000),
+   KAUPUNKI VARCHAR(500),
+   STAD VARCHAR(500),
+   OPERAATTORI VARCHAR(500),
+   KAPASITEETI INTEGER,
+   x INTEGER,
+   y INTEGER,
+   PRIMARY KEY(ID)
+);
+
+CREATE TABLE matkat(
+   departure_date DATETIME,
+   return_date DATETIME,
+   departure_station_id INTEGER, 
+   departure_station_name varchar(100),
+   return_station_id INTEGER,
+   return_station_name varchar(100),
+   covered_distance INTEGER, 
+   duration INTEGER
+);

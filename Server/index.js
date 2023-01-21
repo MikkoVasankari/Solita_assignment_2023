@@ -6,13 +6,18 @@ const port = 3001;
 
 
 // Routers
-const tripRouter = require("./routes/Trips");
+const tripRouter = require("./routes/trips");
 app.use("/trips", tripRouter);
+
+const stationsRouter = require("./routes/stations");
+app.use("/stations", stationsRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+
+// Creating HTTP-server
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
@@ -37,7 +42,7 @@ let con = mysql.createConnection({
   database: databsename,
 });
 
-// Lisätään asemat tietokantaan
+// Adding stations to database
 const fileName1 = "./Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv";
 csvtojson()
   .fromFile(fileName1)
@@ -82,11 +87,11 @@ csvtojson()
         }
       });
     }
-    console.log("First items stored into database successfully");
+    console.log("Station items stored into database successfully");
   });
 
 
-// Lisätään matkat tietokantaa
+// Adding trips to database
 const fileName2 = "./2021-05.csv";
 csvtojson()
   .fromFile(fileName2)
@@ -120,5 +125,5 @@ csvtojson()
         }
       });
     }
-    console.log("Second items stored into database successfully");
+    console.log("Trip items stored into database successfully");
   });

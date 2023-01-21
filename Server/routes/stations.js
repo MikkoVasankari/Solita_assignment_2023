@@ -17,10 +17,9 @@ let con = mysql.createConnection({
   database: databsename,
 });
 
-
 // define the main = "/" page route
 router.get("/", async (req, res) => {
-  con.query("SELECT * from matkat", (err, result) => {
+  con.query("SELECT * from asemat", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -30,8 +29,6 @@ router.get("/", async (req, res) => {
   });
   //con.end();
 });
-
-
 
 
 module.exports = router;

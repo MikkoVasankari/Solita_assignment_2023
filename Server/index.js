@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 3001;
+
+// https://github.com/solita/dev-academy-2023-exercise
+
+
+// Routers
+const tripRouter = require("./routes/Trips");
+app.use("/trips", tripRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

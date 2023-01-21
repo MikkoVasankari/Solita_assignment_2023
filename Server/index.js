@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = 3001;
 
 // https://github.com/solita/dev-academy-2023-exercise
 
+app.use(express.json());
+app.use(cors());
 
 // Routers
 const tripRouter = require("./routes/trips");

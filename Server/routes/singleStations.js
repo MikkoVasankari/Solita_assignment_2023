@@ -17,10 +17,9 @@ let con = mysql.createConnection({
   database: databsename,
 });
 
-
 router.get("/:id", async (req, res) => {
   const testiID = req.params.id;
-  console.log(testiID);
+
   con.query("SELECT * from asemat where id = ?", testiID, (err, result) => {
     if (err) {
       console.log(err);

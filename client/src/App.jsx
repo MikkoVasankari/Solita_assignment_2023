@@ -7,8 +7,9 @@ import {
 import "./App.css";
 import Stations from "./pages/stations";
 import Journeys from  "./pages/journeys";
-// npm i react-router-dom
+import SingleStations from "./pages/singleStation";
 
+// npm i react-router-dom
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/journeys",
     element: <Journeys />,
+  },
+  {
+    path: "/singleStation",
+    element: <SingleStations />,
   },
 ]);
 

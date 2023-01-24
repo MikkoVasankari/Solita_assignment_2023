@@ -8,7 +8,6 @@ function Stations() {
       let response = await fetch("http://localhost:3001/stations",);
       let json = await response.json();
 
-      console.log(json);
       setStations(json);
     } catch (error) {
       console.log(error);

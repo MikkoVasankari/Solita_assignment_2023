@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 
-function App() {
-  const [trips, setTrips] = useState([]);
+function Stations() {
   const [stations, setStations] = useState([]);
-
 
   const fetchStations = async () => {
     try {
@@ -25,11 +22,11 @@ function App() {
   return (
     <div className="App">
       
-      <a>Asemia</a>
+      <a>Stations</a>
       {stations.map((item) => {
         return (
             <ul key = {item.ID}>
-            {item.ID}. {item.NAME} {item.ADDRESS}
+            {item.ID}. {item.NAME} {item.OSOITE}
             </ul>
         );
       })}
@@ -37,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default Stations;

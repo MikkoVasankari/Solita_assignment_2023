@@ -15,6 +15,9 @@ app.use("/trips", tripRouter);
 const stationsRouter = require("./routes/stations");
 app.use("/stations", stationsRouter);
 
+const singleStationsRouter = require("./routes/singleStations");
+app.use("/singlestation", singleStationsRouter);
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -44,6 +47,7 @@ let con = mysql.createConnection({
   password: password,
   database: databsename,
 });
+
 
 // Adding stations to database
 const fileName1 = "./Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv";
@@ -85,8 +89,8 @@ csvtojson()
       ]; // Inserting data of current row // into database
       con.query(insertStatement, items, (err, results, fields) => {
         if (err) {
-          console.log("Unable to insert item at row ", i + 1);
-          return console.log(err);
+          //console.log("Unable to insert item at row ", i + 1);
+          //return console.log(err);
         }
       });
     }
@@ -123,8 +127,8 @@ csvtojson()
       ]; // Inserting data of current row // into database
       con.query(insertStatement, items, (err, results, fields) => {
         if (err) {
-          console.log("Unable to insert item at row ", i + 1);
-          return console.log(err);
+          //console.log("Unable to insert item at row ", i + 1);
+          //return console.log(err);
         }
       });
     }

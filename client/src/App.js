@@ -5,13 +5,14 @@ import "./App.css";
 import Stations from "./pages/stations";
 import Journeys from "./pages/journeys";
 import SingleStations from "./pages/singleStation";
+import Home from "./pages/home";
 
 // npm i react-router-dom
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Home/>,
   },
   {
     path: "/stations",

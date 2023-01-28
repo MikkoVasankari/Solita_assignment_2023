@@ -19,7 +19,7 @@ function SingleStations() {
 
   useEffect(() => {
     fetchSingleStations();
-  }, [station]);
+  }, []);
 
   //  Station name
   //  Station address

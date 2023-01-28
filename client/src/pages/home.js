@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
+  let navigate = useNavigate();
+
   return (
     <div className="App">
       <a>Home page</a>
       <br></br>
-      <a href="http://localhost:3000/journeys">Click to view journeys</a>
+      <button onClick={() => navigate("/stations/")}>Perform action stations</button>
       <br></br>
-      <a href="http://localhost:3000/stations">Click to view stations</a>
+      <button onClick={() => navigate("/journeys/")}>Perform action journeys</button>
     </div>
   );
 }

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function SingleStations() {
   const [station, setStation] = useState([]);
 
+  let { id } = useParams();
+
   const fetchSingleStations = async () => {
     try {
-      let response = await fetch("http://localhost:3001/singlestation/100");
+      let response = await fetch("http://localhost:3001/singlestation/" + id);
       let json = await response.json();
 
       setStation(json);
@@ -16,7 +19,7 @@ function SingleStations() {
 
   useEffect(() => {
     fetchSingleStations();
-  }, []);
+  }, [station]);
 
   //  Station name
   //  Station address

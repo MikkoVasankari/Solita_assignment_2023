@@ -1,12 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import ReactDOM from "react-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Stations from "./pages/stations";
-import Journeys from  "./pages/journeys";
+import Journeys from "./pages/journeys";
 import SingleStations from "./pages/singleStation";
 
 // npm i react-router-dom
@@ -25,16 +22,16 @@ const router = createBrowserRouter([
     element: <Journeys />,
   },
   {
-    path: "/singleStation",
+    path: "/stations/singleStation/:id",
     element: <SingleStations />,
   },
 ]);
 
 function App() {
   ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+    <div>
       <RouterProvider router={router} />
-    </React.StrictMode>
+    </div>
   );
 }
 

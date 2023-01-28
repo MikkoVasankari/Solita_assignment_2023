@@ -17,7 +17,7 @@ function Stations() {
 
   let navigate = useNavigate();
   const handleClick = (ID) => {
-    let path = "././singlestation/" + ID;
+    let path = "/singlestation/" + ID;
     navigate(path);
   };
 

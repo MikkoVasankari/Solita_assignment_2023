@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Journeys />,
   },
   {
-    path: "/stations/singleStation/:id",
+    path: "/singleStation/:id",
     element: <SingleStations />,
   },
 ]);

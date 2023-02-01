@@ -51,18 +51,13 @@ function SingleStations() {
     fetchSinsgleStationReturns();
   }, []);
 
-  //  Station name
-  //  Station address
-  //  Total number of journeys starting from the station
-  //  Total number of journeys ending at the station
-
   return (
     <div className="App">
       <a>Station</a>
       {station.map((item) => {
         return (
           <ul key={item.ID}>
-            {item.NAME} {item.OSOITE} <br></br> Amount of departures:{" "}
+            {item.NAME}<br></br> Station address: {item.OSOITE} <br></br> Amount of departures:{" "}
             {stationDeparture.length}
             <br></br> Amount of returns: {stationReturn.length}
           </ul>

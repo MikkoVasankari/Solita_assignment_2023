@@ -8,31 +8,25 @@ function Journeys() {
       let response = await fetch("http://localhost:3001/trips");
       let json = await response.json();
 
-      console.log(json);
       setTrips(json);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const tiedonMuokkaus = (item) => {
-    for (let i = 0; i < trips.length; i++) {
-      const inKm = item[i].covered_distance / 1000;
+  function distance(item) {
+    const inKm = item.covered_distance / 1000;
+    const stringKm = String(inKm);
+    const slicedToKm = stringKm.slice(0, 3);
+    return <p>Distance: {slicedToKm} km</p>;
+  }
 
-      //console.log(inKm + " Km");
-
-      const inMin = item[i].duration / 60;
-      const stringMin = String(inMin);
-      const slicedToMin = stringMin.slice(0, 1);
-
-      //trips.push(
-
-      //)
-
-    }
-  };
-
-  tiedonMuokkaus(trips);
+  function duration(item) {
+    const inMin = item.duration / 60;
+    const stringMin = String(inMin);
+    const slicedToMin = stringMin.slice(0, 1);
+    return <p>Duration: {slicedToMin} minutes</p>;
+  }
 
   useEffect(() => {
     fetchTrips();
@@ -47,12 +41,12 @@ function Journeys() {
     <div className="App">
       <a>Journeys</a>
       <br></br>
-      <a>Departure</a> <a>Return</a> <a>Distance</a> <a>Duration</a>
+      <p>Departure station  -  Return station </p>
       {trips.map((item) => {
         return (
           <ul key={item.ID}>
             {item.departure_station_name} - {item.return_station_name}{" "}
-            {item.covered_distance}m {item.duration}s 
+            {distance(item)} {duration(item)}
           </ul>
         );
       })}

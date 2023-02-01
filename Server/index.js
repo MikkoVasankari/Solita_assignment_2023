@@ -127,7 +127,7 @@ csvtojson()
     console.log("Station items stored into database successfully");
   });
 }
-// Adding trips to database
+// Adding journeys to database
 function readFile() {
 const fileName2 = "./2021-05.csv";
 csvtojson()

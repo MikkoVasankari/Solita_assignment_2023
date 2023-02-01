@@ -53,7 +53,7 @@ function SingleStations() {
 
   return (
     <div className="App">
-      <a>Station</a>
+      <p>Station</p>
       {station.map((item) => {
         return (
           <ul key={item.ID}>

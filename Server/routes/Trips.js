@@ -7,20 +7,22 @@ const mysql = require("mysql");
 const hostname = "localhost",
   username = "root",
   password = "root",
-  databsename = "solita";
+  databasename = "solita_assignment",
+  table1 = "stations",
+  table2 = "journeys";
 
 // Establish connection to the database
 let con = mysql.createConnection({
   host: hostname,
   user: username,
   password: password,
-  database: databsename,
+  database: databasename,
 });
 
 
 // define the main = "/" page route
 router.get("/", async (req, res) => {
-  con.query("SELECT * from matkat", (err, result) => {
+  con.query("SELECT * from "+table2, (err, result) => {
     if (err) {
       console.log(err);
     } else {

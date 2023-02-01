@@ -5,14 +5,14 @@ const port = 3001;
 
 // Creating HTTP-server
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
 
 app.use(express.json());
 app.use(cors());
 
 // Routers
-const tripRouter = require("./routes/trips");
+const tripRouter = require("./routes/Trips");
 app.use("/trips", tripRouter);
 
 const stationsRouter = require("./routes/stations");
@@ -34,16 +34,51 @@ const mysql = require("mysql");
 const hostname = "localhost",
   username = "root",
   password = "root",
-  databsename = "solita";
+  databasename = "solita_assignment",
+  table1 = "stations",
+  table2 = "journeys";
 
 // Establish connection to the database
 let con = mysql.createConnection({
   host: hostname,
   user: username,
   password: password,
-  database: databsename,
 });
 
+// Create database and tables
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  con.query("CREATE DATABASE " + databasename, function (err, result) {
+    if (err) throw err;
+    console.log("Database created");
+  });
+
+  con.query("use " + databasename +";", function (err, result) {
+    if (err) throw err;
+    console.log("Database "+databasename+" in use");
+  });
+  // creating table 1
+  var sql = "CREATE TABLE "+ table1 +"(FID INTEGER NOT NULL,ID INTEGER NOT NULL,NIMI VARCHAR(500),NAMN VARCHAR(500),NAME VARCHAR(500),OSOITE VARCHAR(1000),ADDRESS VARCHAR(1000),KAUPUNKI VARCHAR(500),STAD VARCHAR(500),OPERAATTORI VARCHAR(500),KAPASITEETI INTEGER,x INTEGER,y INTEGER,PRIMARY KEY(ID))";
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("Table "+ table1 +" created");
+  });
+
+  // creating table 2
+  var sql = "CREATE TABLE "+ table2 +"(departure_date DATETIME,return_date DATETIME,departure_station_id INTEGER, departure_station_name varchar(100),return_station_id INTEGER,return_station_name varchar(100),covered_distance INTEGER, duration INTEGER, FOREIGN KEY (departure_station_id)REFERENCES  "+table1+"(ID))";
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("Table "+ table2 +" created");
+  });
+
+  readStations();
+  readFile();
+
+});
+
+
+function readStations(){
 // Adding stations to database
 const fileName1 = "./Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv";
 csvtojson()
@@ -66,7 +101,7 @@ csvtojson()
         x = source[i]["x"],
         y = source[i]["y"];
       var insertStatement =
-        "INSERT INTO asemat values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO "+table1+" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       var items = [
         FID,
         ID,
@@ -85,14 +120,15 @@ csvtojson()
       con.query(insertStatement, items, (err, results, fields) => {
         if (err) {
           //console.log("Unable to insert item at row ", i + 1);
-          //return console.log(err);
+          return console.log(err);
         }
       });
     }
     console.log("Station items stored into database successfully");
   });
-
+}
 // Adding trips to database
+function readFile() {
 const fileName2 = "./2021-05.csv";
 csvtojson()
   .fromFile(fileName2)
@@ -113,7 +149,7 @@ csvtojson()
           covered_distance = source[i]["Covered distance (m)"],
           duration = source[i]["Duration (sec)"];
         var insertStatement =
-          "INSERT INTO matkat values(?, ?, ?, ?, ?, ?, ?, ?)";
+          "INSERT INTO "+table2+" values(?, ?, ?, ?, ?, ?, ?, ?)";
         var items = [
           departure_date,
           return_date,
@@ -127,12 +163,13 @@ csvtojson()
         con.query(insertStatement, items, (err, results, fields) => {
           if (err) {
             //console.log("Unable to insert item at row ", i + 1);
-            //return console.log(err);
+            return console.log(err);
           }
         });
       } else {
         //console.log("Items duration or distance on row " +[i] +" wasn't enough to be added to database");
       }
     }
-    console.log("Trip items stored into database successfully");
+    console.log("Journey items stored into database successfully");
   });
+}

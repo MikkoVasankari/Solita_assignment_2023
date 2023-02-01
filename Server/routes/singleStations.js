@@ -7,20 +7,22 @@ const mysql = require("mysql");
 const hostname = "localhost",
   username = "root",
   password = "root",
-  databsename = "solita";
+  databasename = "solita_assignment",
+  table1 = "stations",
+  table2 = "journeys";
 
 // Establish connection to the database
 let con = mysql.createConnection({
   host: hostname,
   user: username,
   password: password,
-  database: databsename,
+  database: databasename,
 });
 
 router.get("/:id", async (req, res) => {
   const testiID = req.params.id;
 
-  con.query("SELECT * from asemat where id = ?", testiID, (err, result) => {
+  con.query("SELECT * from "+table1+" where id = ?", testiID, (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -33,7 +35,7 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/departure", async (req, res) => {
   const testiID = req.params.id;
 
-  con.query("SELECT * from matkat where departure_station_id = ?", testiID, (err, result) => {
+  con.query("SELECT * from "+table2 +" where departure_station_id = ?", testiID, (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -47,7 +49,7 @@ router.get("/:id/departure", async (req, res) => {
 router.get("/:id/return", async (req, res) => {
   const testiID = req.params.id;
 
-  con.query("SELECT * from matkat where return_station_id = ?", testiID, (err, result) => {
+  con.query("SELECT * from "+table2 +" where return_station_id = ?", testiID, (err, result) => {
     if (err) {
       console.log(err);
     } else {

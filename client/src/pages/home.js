@@ -6,9 +6,11 @@ function Home() {
 
   return (
     <div className="App">
-      <a>Home page</a>
+      <p>Home page</p>
+      <br></br>
       <br></br>
       <button onClick={() => navigate("/stations/")}>Go to stations</button>
+      <br></br>
       <br></br>
       <button onClick={() => navigate("/journeys/")}>Go to journeys</button>
     </div>

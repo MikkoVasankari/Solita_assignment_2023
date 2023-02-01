@@ -28,21 +28,20 @@ function Journeys() {
     return <p>Duration: {slicedToMin} minutes</p>;
   }
 
+
   useEffect(() => {
     fetchTrips();
   }, []);
 
-  // List journeys
-  // If you don't implement pagination, use some hard-coded limit for the list length because showing several million rows would make any browser choke
-  // For each journey show departure and return stations,
-  // covered distance in kilometers and duration in minutes
-
   return (
     <div className="App">
-      <a>Journeys</a>
-      <br></br>
-      <p>Departure station  -  Return station </p>
+      
+      <p>Journeys</p>
+      <p>Departure station - Return station </p>
+      
+      
       {trips.map((item) => {
+        
         return (
           <ul key={item.ID}>
             {item.departure_station_name} - {item.return_station_name}{" "}

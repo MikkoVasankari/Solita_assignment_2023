@@ -131,11 +131,7 @@ csvtojson()
           }
         });
       } else {
-        console.log(
-          "Items duration or distance on row " +
-            [i] +
-            " wasn't enough to be added to database"
-        );
+        //console.log("Items duration or distance on row " +[i] +" wasn't enough to be added to database");
       }
     }
     console.log("Trip items stored into database successfully");

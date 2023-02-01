@@ -27,7 +27,9 @@ function Stations() {
 
   return (
     <div className="App">
-      <a>Stations</a>
+      <p>Stations</p>
+      <p>Click on station to view more information</p>
+
       {stations.map((item) => {
         return (
           <ul key={item.ID}>

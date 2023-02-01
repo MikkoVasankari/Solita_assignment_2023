@@ -28,7 +28,35 @@ router.get("/:id", async (req, res) => {
       res.json(vastausJSON);
     }
   });
-  //con.end();
 });
+
+router.get("/:id/departure", async (req, res) => {
+  const testiID = req.params.id;
+
+  con.query("SELECT * from matkat where departure_station_id = ?", testiID, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      vastausJSON = JSON.parse(JSON.stringify(result));
+      res.json(vastausJSON);
+    }
+  });
+  
+});
+
+router.get("/:id/return", async (req, res) => {
+  const testiID = req.params.id;
+
+  con.query("SELECT * from matkat where return_station_id = ?", testiID, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      vastausJSON = JSON.parse(JSON.stringify(result));
+      res.json(vastausJSON);
+    }
+  });
+});
+
+
 
 module.exports = router;

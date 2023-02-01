@@ -40,5 +40,7 @@ CREATE TABLE matkat(
    return_station_id INTEGER,
    return_station_name varchar(100),
    covered_distance INTEGER, 
-   duration INTEGER
+   duration INTEGER, 
+   FOREIGN KEY (departure_station_id)
+		REFERENCES  asemat(ID)
 );

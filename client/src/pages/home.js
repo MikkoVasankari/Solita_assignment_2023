@@ -8,9 +8,9 @@ function Home() {
     <div className="App">
       <a>Home page</a>
       <br></br>
-      <button onClick={() => navigate("/stations/")}>Perform action stations</button>
+      <button onClick={() => navigate("/stations/")}>Go to stations</button>
       <br></br>
-      <button onClick={() => navigate("/journeys/")}>Perform action journeys</button>
+      <button onClick={() => navigate("/journeys/")}>Go to journeys</button>
     </div>
   );
 }

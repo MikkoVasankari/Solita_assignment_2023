@@ -5,7 +5,7 @@ function Journeys() {
 
   const fetchTrips = async () => {
     try {
-      let response = await fetch("http://localhost:3001/trips");
+      let response = await fetch("http://localhost:3001/journeys");
       let json = await response.json();
 
       setTrips(json);

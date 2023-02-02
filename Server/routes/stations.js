@@ -4,7 +4,7 @@ const router = express.Router();
 const mysql = require("mysql");
 
 // Database credentials
-const hostname = "localhost",
+const hostname = "mysqldb",
   username = "root",
   password = "root",
   databasename = "solita_assignment",

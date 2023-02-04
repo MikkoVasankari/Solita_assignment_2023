@@ -1,6 +1,6 @@
 # Solita_assingment_2023
 This is my solution to the solita [dev-academy-2023 pre-assignment](https://github.com/solita/dev-academy-2023-exercise). 
-In this assignment I have used docker to run the backend/sevrer side of the code and in the frontend/client side I have used React.
+In this assignment I have used docker to run the backend/server side of the code and in the frontend/client side I have used React.
 
 ### To Install the project:
 You should be able just to clone the project from GitHub with command

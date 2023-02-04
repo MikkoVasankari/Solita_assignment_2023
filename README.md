@@ -15,7 +15,7 @@ So you might want to install it at https://www.docker.com/
 
 2. When you have docker runinng you should first change your directory to the backend/server side of the project with 
 ```
-cd ./Solita_assingment_2023/Server
+cd /Solita_assingment_2023/Server
 ```
 3. When you are in the server directory you can just run the backend/server with:
 ```
@@ -30,7 +30,7 @@ docker compose down
 
 1. change your directory to the project files client directory:
 ```
-cd ./Solita_assingment_2023/client
+cd /Solita_assingment_2023/client
 ```
 2. The client/frontend requires react-router-dom so you might want to install that with:
 ```

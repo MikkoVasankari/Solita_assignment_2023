@@ -25,6 +25,7 @@ function Stations() {
     fetchStations();
   }, []);
 
+
   return (
     <div className="App">
       <p>Stations</p>

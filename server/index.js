@@ -3,6 +3,9 @@ const app = express();
 const cors = require("cors");
 const port = 3001;
 
+// https://github.com/solita/dev-academy-2023-exercise
+
+// npm i mysql and csvtojson
 // npm i cors express
 
 // Creating HTTP-server
@@ -23,10 +26,6 @@ app.use("/stations", stationsRouter);
 const singleStationsRouter = require("./routes/singleStations");
 app.use("/singlestation", singleStationsRouter);
 
-// https://github.com/solita/dev-academy-2023-exercise
-
-// Requiring module
-// npm i mysql and csvtojson
 
 // Importing mysql and csvtojson packages
 const csvtojson = require("csvtojson");
@@ -50,8 +49,7 @@ let con = mysql.createConnection({
 
 // Create database and tables
 con.query("use " + databasename + ";", function (err, result) {
-  //if (err) throw err;
-  //console.log("Database " + databasename + " in use");
+
 });
 // creating table 1
 var sql =
@@ -59,7 +57,6 @@ var sql =
   table1 +
   "(FID INTEGER NOT NULL,ID INTEGER NOT NULL,NIMI VARCHAR(500),NAMN VARCHAR(500),NAME VARCHAR(500),OSOITE VARCHAR(1000),ADDRESS VARCHAR(1000),KAUPUNKI VARCHAR(500),STAD VARCHAR(500),OPERAATTORI VARCHAR(500),KAPASITEETI INTEGER,x INTEGER,y INTEGER,PRIMARY KEY(ID))";
 con.query(sql, function (err, result) {
-  //if (err) throw err;
   console.log("Table " + table1 + " created");
 });
 
@@ -71,7 +68,6 @@ var sql =
   table1 +
   "(ID))";
 con.query(sql, function (err, result) {
-  //if (err) throw err;
   console.log("Table " + table2 + " created");
 });
 
@@ -129,7 +125,8 @@ function readStations() {
       console.log("Station items stored into database successfully");
     });
 }
-// Addi
+
+// Adding journeys to database
 function readFile() {
 const fileName2 = "./2021-05.csv";
 csvtojson()

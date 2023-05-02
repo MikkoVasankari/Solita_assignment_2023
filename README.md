@@ -37,14 +37,14 @@ cd ../Solita_assingment_2023/client
 ```
 3. Then in the client directory you can start the client with:
 ```
- npm start
+ npm run dev
 ```
 
 
 ### Using the web application
 After you have your server and client running you should be able to use application
 ```
-http://localhost:3000
+http://localhost:5173/
 ```
 
 

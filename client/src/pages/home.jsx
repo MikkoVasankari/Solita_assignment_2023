@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 function Home() {
   let navigate = useNavigate();
 
@@ -13,9 +11,6 @@ function Home() {
       </div>
     )
   }
-
-
-
 
   return (
     <div className="App">

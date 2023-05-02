@@ -20,7 +20,6 @@ services:
     depends_on:
       mysqldb:
         condition: service_healthy
-    restart: unless-stopped
     ports:
       - 3001:3001
     environment:

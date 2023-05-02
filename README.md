@@ -15,7 +15,7 @@ So you might want to install it at https://www.docker.com/
 
 2. When you have docker runinng you should first change your directory to the server side of the project with 
 ```
-cd /Solita_assingment_2023/Server
+cd /Solita_assingment_2023/server
 ```
 3. When you are in the server directory you can just run the server with:
 ```

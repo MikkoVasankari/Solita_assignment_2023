@@ -14,7 +14,7 @@ So if you dont have it might want to install it https://www.docker.com/
 
 2. When you have docker running you should first change your directory to the server side of the project with 
 ```
-cd /Solita_assingment_2023/server
+cd ../Solita_assingment_2023/server
 ```
 3. When you are in the server directory you can just run the server with:
 ```
@@ -29,7 +29,7 @@ docker compose down
 
 1. change your directory to the project files client directory:
 ```
-cd /Solita_assingment_2023/client
+cd ../Solita_assingment_2023/client
 ```
 2. Install dependencies
 ```

@@ -9,7 +9,7 @@ function Home() {
   function Hello() {
     return(
       <div>
-        <p>Hello world</p>
+       
       </div>
     )
   }

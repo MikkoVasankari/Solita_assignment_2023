@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Stations from "./pages/stations";
@@ -27,11 +26,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  ReactDOM.createRoot(document.getElementById("root")).render(
+  return (
     <div>
       <RouterProvider router={router} />
-    </div>
-  );
+    </div>)
 }
 
 export default App;

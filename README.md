@@ -12,7 +12,7 @@ git clone https://github.com/MikkoVasankari/Solita_assingment_2023.git
 1. The backend has a docker container implementation so it requires you to have docker
 So if you dont have it might want to install it https://www.docker.com/
 
-2. When you have docker running you should first change your directory to the server side of the project with 
+2. When you have docker running you should first change your directory to the server side of the project 
 ```
 cd ../Solita_assingment_2023/server
 ```
@@ -27,7 +27,7 @@ docker compose down
 
 ### To run the client
 
-1. change your directory to the project files client directory:
+1. change your directory to the client directory:
 ```
 cd ../Solita_assingment_2023/client
 ```
@@ -42,7 +42,7 @@ cd ../Solita_assingment_2023/client
 
 
 ### Using the web application
-After you have your client and server running you should be able to use application in:
+After you have your server and client running you should be able to use application
 ```
 http://localhost:3000
 ```

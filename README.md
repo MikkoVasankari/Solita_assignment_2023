@@ -10,10 +10,9 @@ git clone https://github.com/MikkoVasankari/Solita_assingment_2023.git
 
 ### To run the server 
 1. The backend has a docker container implementation so it requires you to have docker
-So you might want to install it at https://www.docker.com/
- - After that you should have docker running.
+So if you dont have it might want to install it https://www.docker.com/
 
-2. When you have docker runinng you should first change your directory to the server side of the project with 
+2. When you have docker running you should first change your directory to the server side of the project with 
 ```
 cd /Solita_assingment_2023/server
 ```

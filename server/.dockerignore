@@ -1,8 +1,8 @@
 **/.classpath
-**/.dockerignore
+/.dockerignore
 **/.env
 **/.git
-**/.gitignore
+/.gitignore
 **/.project
 **/.settings
 **/.toolstarget
@@ -12,10 +12,10 @@
 **/*.dbmdl
 **/*.jfm
 **/charts
-**/docker-compose*
+/docker-compose*
 **/compose*
-**/Dockerfile*
-**/node_modules
+/Dockerfile*
+/node_modules
 **/npm-debug.log
 **/obj
 **/secrets.dev.yaml

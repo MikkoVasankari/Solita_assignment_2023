@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 function Stations() {
   const [stations, setStations] = useState([]);
 
+  let navigate = useNavigate();
+
   const fetchStations = async () => {
     try {
       let response = await fetch("http://localhost:3001/stations");
@@ -15,7 +17,6 @@ function Stations() {
     }
   };
 
-  let navigate = useNavigate();
   const handleClick = (ID) => {
     let path = "/singlestation/" + ID;
     navigate(path);
@@ -28,6 +29,9 @@ function Stations() {
 
   return (
     <div className="App">
+      
+      <button onClick={() => navigate("/")}>Go Back</button>
+
       <p>Stations</p>
       <p>Click on station to view more information</p>
 

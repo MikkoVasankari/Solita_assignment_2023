@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Journeys() {
   const [trips, setTrips] = useState([]);
+
+  let navigate = useNavigate();
 
   const fetchTrips = async () => {
     try {
@@ -28,7 +31,6 @@ function Journeys() {
     return <p>Duration: {slicedToMin} minutes</p>;
   }
 
-
   useEffect(() => {
     fetchTrips();
   }, []);
@@ -36,6 +38,8 @@ function Journeys() {
   return (
     <div className="App">
       
+      <button onClick={() => navigate("/")}>Go Back</button>
+
       <p>Journeys</p>
       <p>Departure station - Return station </p>
       

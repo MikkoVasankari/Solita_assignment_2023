@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 
 function SingleStations() {
   const [station, setStation] = useState([]);
@@ -7,6 +7,7 @@ function SingleStations() {
   const [stationReturn, setStationReturn] = useState([]);
 
   let { id } = useParams();
+  let navigate = useNavigate();
 
   const fetchSingleStations = async () => {
     try {
@@ -51,8 +52,12 @@ function SingleStations() {
     fetchSinsgleStationReturns();
   }, []);
 
+
   return (
     <div className="App">
+
+    <button onClick={() => navigate("/")}>Go Back</button>  
+
       <p>Station</p>
       {station.map((item) => {
         return (
